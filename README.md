@@ -5,12 +5,10 @@
 ![cuDNN](https://img.shields.io/badge/cuDNN-8.1-76B900?logo=nvidia&style=flat-square)
 ![Python](https://img.shields.io/badge/Python-3.8-3776AB?logo=python&style=flat-square)
 
-<p align="center">
-    <img src="doc\tfl2a.png" alt="project logo" style="max-width: 500px; width: 100%;"/>
-</p>
+<img src="doc\tfl2a.png" width="500">
 
 ## Summary
-*Last Update 14.05.2021 for app version 0.3.1-beta*
+*Last Update 17.05.2021 for app version 0.3.1-beta*
 
 You can get the latest compiled version of the app [here](https://github.com/embedded-machine-learning/eml-mobile-photo-app/tree/main/app/release).
 
@@ -40,9 +38,7 @@ This guide should act as a single source for all tools you need to use the app. 
 
 In the image you can see a structured overview of the three main components of this project: The model conversion, the remote model hosting and the app itself.
 
-<p align="left">
-    <img src="doc\project-overview.png" alt="project logo" style="max-width: 650px; width: 100%;"/>
-</p>
+<img src="doc\project-overview.png" width="650"/>
 
 ## 2. Setup the environment
 
@@ -202,9 +198,7 @@ The app is designed to work with the object detection models hosted on Google Fi
 
 For this the app is using 2 Google Firebase APIs: Machine Learning and Remote Config.
 
-<p align="center">
-    <img src="doc\project-model-hosting.png" alt="project logo" style="max-width: 400px; width: 100%;"/>
-</p>
+<img src="doc\project-model-hosting.png" width="400"/>
 
 The machine learning API is responsible for downloading the models from the Google cloud. 
 
@@ -271,14 +265,12 @@ In this section the app itself is described. You should get a feeling of what pa
 
 Here you can see a navigational diagram of the activities and their coresponding screenshots: 
 
-<p align="left">
-    <img src="doc\project-app-activity.png" alt="project logo" style="max-width: 700px; width: 100%;"/>
-</p>
+<img src="doc\project-app-activity.png" width="700"/>
 
 <p align="left">
-    <img src="doc\activity_modelchooser.png" alt="project logo" style="max-width: 250px; width: 100%;"/>
-    <img src="doc\activity_camera.png" alt="project logo" style="max-width: 250px; width: 100%;"/>
-     <img src="doc\activity_settings.png" alt="project logo" style="max-width: 250px; width: 100%;"/>
+    <img src="doc\activity_modelchooser.png" width="250"/>
+    <img src="doc\activity_camera.png" width="250"/>
+     <img src="doc\activity_settings.png" width="250"/>
 </p>
 
 As you can see in the diagram, the app has 3 activities with the socalled "modelChooser" activity as an entry point to the app. So when your start the app you will start in the modelChooser activity.
@@ -298,9 +290,7 @@ In the default state the object detection is performed in the "Continuous" mode.
 You can change this behaviour in the settings under ["OneShot mode"](#one-shot-mode). With this mode selected the object detection is only performed when the capture button is pressed.
 To illustrate the data flow of the camera streams see the following picture
 
-<p align="left">
-    <img src="doc\project-app-detail.png" alt="project logo" style="max-width: 700px; width: 100%;"/>
-</p>
+<img src="doc\project-app-detail.png" width="700"/>
 
 Notice that the tracker in the "Continious mode" (analysis stream) is drawing the bounding boxes of the detected objects onto the tracking screen overlay, while the "OneShot mode" is drawing the boxes onto the picture itself, and saves this picture onto the devices storage.
 
@@ -308,9 +298,7 @@ The preview stream is just to draw the current camera image onto the screen, so 
 
 Lets have a closer look at the extended statistics panel:
 
-<p align="left">
-    <img src="doc\activity_camera_stat_detail.png" alt="project logo" style="max-width: 400px; width: 100%;"/>
-</p>
+<img src="doc\activity_camera_stat_detail.png" width="400"/>
 
 It gives you an overview over the inferences performed through the app. You can see the last inference time, the inferences per second (which includes the whole processing pipeline) and also a boxplot of the last n inferences performed.
 At the bottom you see basic information of the currently loaded model.
