@@ -1,0 +1,57 @@
+<resources>
+
+    <string name="app_name">Object Detection Demo</string>
+    <string name="eml_logo_desc">EML logo</string>
+
+    <string name="action_bar_title">Object Detection</string>
+
+    <!-- modelChooser activity -->
+    <string name="modelChooser_title">Object Detection</string>
+    <string name="modelChooser_subtitle">Demonstration</string>
+    <string name="modelChooser_startButton_text">Start</string>
+    <string name="modelChooserLog_defaultMessage">Connecting</string>
+
+    <string name="modelChooser_stat_noValueAvailable">…</string>
+    <string name="modelChooser_stat_inference_label">Inference time</string>
+    <string name="modelChooser_stat_inferences_per_second">Inference per s</string>
+    <string name="modelChooser_stat_model">Model Name</string>
+    <string name="modelChooser_stat_crop_label">Model Input Resolution</string>
+
+    <!-- Settings -->
+    <string name="pref_image_processing_header">Image Processing</string>
+    <string name="pref_detection_header">Detection</string>
+    <string name="pref_stat_header">Statistics</string>
+
+    <string name="pref_cropMode_title">Crop Mode</string>
+    <string name="pref_cropMode_summary">Change the crop mode</string>
+    <string name="pref_cropMode_contain">Contain</string>
+    <string name="pref_cropMode_contain_value">contain</string>
+    <string name="pref_cropMode_cover">Cover</string>
+    <string name="pref_cropMode_cover_value">cover</string>
+
+    <string name="pref_boundingBoxColorMode_title">Bounding Box Color Mode</string>
+    <string name="pref_boundingBoxColorMode_summary">Select if the color of the bounding boxes shell represent th confidence level or the detected class</string>
+    <string name="pref_boundingBoxColorMode_confidence">Confidence</string>
+    <string name="pref_boundingBoxColorMode_classes">Classes</string>
+    <string name="pref_boundingBoxColorMode_confidence_value">confidence</string>
+    <string name="pref_boundingBoxColorMode_classes_value">classes</string>
+
+    <string name="pref_confidence_threshold_title">Confidence Threshold</string>
+    <string name="pref_confidence_threshold_summary">At which value the detection should be shown</string>
+
+    <string name="pref_boxplotSamples_title">BoxPlot Sample Number</string>
+    <string name="pref_boxplotSamples_summary">Number of inference samples to use in boxplot</string>
+
+    <string name="pref_number_threads_title">Number of Threads</string>
+    <string name="pref_number_threads_summary">Number of threads which should be used for detection</string>
+
+    <string name="pref_nnapi_title">Enable NNAPI usage</string>
+    <string name="pref_nnapi_summary">Request the usage of the Android Neural Network API</string>
+
+    <string name="show_confidence_level">Display confidence in Bounding box</string>
+    <string name="show_confidence_level_summary">Displays the confidence level in the bounding box after the class name</string>
+    <string name="capture_button_alt">Capture</string>
+    <string name="pref_oneshot_summary">Enable the Oneshot Detection mode where the detection is only performed manually</string>
+    <string name="pref_oneshot_title">One Shot Mode</string>
+
+</resources>

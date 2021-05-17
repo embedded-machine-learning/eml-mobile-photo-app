@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="cropMode_entries">
+        <item>@string/pref_cropMode_cover</item>
+        <item>@string/pref_cropMode_contain</item>
+    </string-array>
+
+    <string-array name="cropMode_values">
+        <item>@string/pref_cropMode_cover_value</item>
+        <item>@string/pref_cropMode_contain_value</item>
+    </string-array>
+
+    <string-array name="boundingBoxColorMode_entries">
+        <item>@string/pref_boundingBoxColorMode_confidence</item>
+        <item>@string/pref_boundingBoxColorMode_classes</item>
+    </string-array>
+
+    <string-array name="boundingBoxColorMode_values">
+        <item>@string/pref_boundingBoxColorMode_confidence_value</item>
+        <item>@string/pref_boundingBoxColorMode_classes_value</item>
+    </string-array>
+
+</resources>

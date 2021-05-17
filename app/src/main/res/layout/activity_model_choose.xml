@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/eml_blue_bg"
+    tools:context=".ModelChooseActivity">
+
+    <TextView
+        android:id="@+id/loadscreen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="@string/modelChooser_title"
+        android:textColor="@color/eml_white"
+        android:textSize="34sp"
+        app:layout_constraintStart_toStartOf="@+id/eml_logo"
+        app:layout_constraintTop_toBottomOf="@+id/eml_logo" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="150dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toBottomOf="@id/loadscreen_title">
+
+        <ImageView
+            android:id="@+id/circle_lf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/circle_lf"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/circle_rb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="80dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/circle_rb"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/circle_lb"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/circle_lb"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/circle_rf"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:adjustViewBounds="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/circle_rf"
+            tools:ignore="ContentDescription" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/eml_logo"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="80dp"
+        android:adjustViewBounds="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_eml"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/demonst_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/roboto_light"
+        android:text="@string/modelChooser_subtitle"
+        android:textColor="@color/eml_grey"
+        android:textSize="28sp"
+        app:layout_constraintStart_toStartOf="@+id/loadscreen_title"
+        app:layout_constraintTop_toTopOf="@+id/loadscreen_title"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/log"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/roboto_light"
+        android:maxWidth="300dp"
+        android:text="@string/modelChooserLog_defaultMessage"
+        android:textColor="@color/eml_grey"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/loadscreen_title"
+        app:layout_constraintTop_toBottomOf="@+id/demonst_textview"
+        tools:ignore="ContentDescription" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/eml_plot_highlight"
+        android:maxWidth="300dp"
+        android:spinnerMode="dialog"
+        app:layout_constraintStart_toStartOf="@+id/demonst_textview"
+        app:layout_constraintTop_toBottomOf="@+id/log"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/eml_blue"
+        android:fontFamily="@font/roboto"
+        android:letterSpacing="0.06"
+        android:text="@string/modelChooser_startButton_text"
+        android:textAllCaps="false"
+        android:textSize="24sp"
+        app:cornerRadius="50sp"
+        app:layout_constraintStart_toStartOf="@+id/demonst_textview"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ObjectDetectionDemo" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:textColor">@color/black</item>
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/eml_blue_dark</item>
+        <item name="colorOnPrimary">@color/eml_white</item>
+        <item name="android:textColorPrimary">@color/eml_white</item>
+
+        <item name="colorSecondary">@color/eml_blue</item>
+        <item name="colorOnSecondary">@color/eml_white</item>
+        <item name="android:textColorSecondary">@color/eml_white</item>
+
+        <!-- Bars -->
+        <item name="android:statusBarColor">@color/status_color</item>
+        <!--<item name="android:navigationBarColor" tools:targetApi="1">@color/eml_blue_bg</item>-->
+    </style>
+
+    <style name="Theme.ObjectDetectionDemoPref" parent="Theme.ObjectDetectionDemo">
+        <item name="android:textColorSecondary">@color/eml_grey_dark</item>
+    </style>
+
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/toolbar_title_fontsize</item>
+        <item name="fontFamily">@font/roboto_medium</item>
+        <item name="android:textColor">@color/eml_white</item>
+    </style>
+
+</resources>

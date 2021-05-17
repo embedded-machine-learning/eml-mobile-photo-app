@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid
+        android:color="@color/eml_black_trans"/>
+    <corners
+        android:topLeftRadius="@dimen/stat_bottomSheet_corner_Radius"
+        android:topRightRadius="@dimen/stat_bottomSheet_corner_Radius"/>
+</shape>

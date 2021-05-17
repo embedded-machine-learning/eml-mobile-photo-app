@@ -1,0 +1,6 @@
+demonstrator
+cpu
+gpu
+npu
+person
+other

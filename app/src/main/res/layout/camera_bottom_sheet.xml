@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
+    android:background="@drawable/bottom_sheet_background"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingHorizontal="14dp"
+    app:behavior_hideable="true"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <LinearLayout
+        android:id="@+id/always_on_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
+
+        <ImageView
+            android:id="@+id/arrow_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            app:srcCompat="@drawable/ic_baseline_keyboard_arrow_up_16" />
+
+        <LinearLayout
+            android:id="@+id/inference_summary_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/inference_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modelChooser_stat_inference_label"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+
+            <TextView
+                android:id="@+id/inference_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/modelChooser_stat_noValueAvailable"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modelChooser_stat_inferences_per_second"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+
+            <TextView
+                android:id="@+id/stat_processing_val"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/modelChooser_stat_noValueAvailable"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/stat_plot_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/modelChooser_stat_noValueAvailable"
+            android:textColor="@color/eml_stat_color"
+            android:textSize="@dimen/stat_fontSize" />
+
+        <at.tuwien.ict.eml.odd.customView.OverlayView
+            android:id="@+id/boxplot_overlay"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/stat_boxplot_height"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modelChooser_stat_model"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+
+            <TextView
+                android:id="@+id/stat_usedmodel_val"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/modelChooser_stat_noValueAvailable"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/modelChooser_stat_crop_label"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+
+            <TextView
+                android:id="@+id/stat_cropSize_val"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/modelChooser_stat_noValueAvailable"
+                android:textColor="@color/eml_stat_color"
+                android:textSize="@dimen/stat_fontSize" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

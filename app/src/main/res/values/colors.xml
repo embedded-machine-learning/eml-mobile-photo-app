@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="eml_blue_light">#74A2F2</color>
+
+    <color name="eml_blue">#2a5cb0</color>
+    <color name="eml_blue_dark">#0A224A</color>
+    <color name="eml_blue_darker">#0A1733</color>
+    <color name="eml_blue_bg">#051024</color>
+
+    <color name="eml_white">#eeeeee</color>
+    <color name="eml_grey">#A6A6A6</color>
+    <color name="eml_grey_dark">#888</color>
+    <color name="eml_black_trans">#BF000000</color>
+
+    <color name="eml_plot_highlight">#3D83FC</color>
+    <color name="eml_blue_green">#30E8FE</color>
+    <color name="eml_green">#20E8C5</color>
+    <color name="eml_stat_color">@color/white</color>
+
+    <color name="eml_warning">#FFDD00</color>
+
+    <!-- generated -->
+    <color name="toolbar_color">@color/eml_blue_darker</color>
+    <color name="status_color">@color/eml_blue_bg</color>
+</resources>

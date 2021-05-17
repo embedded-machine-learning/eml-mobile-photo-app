@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_outline_image_24"
+        app:title="@string/pref_image_processing_header">
+        <SwitchPreference
+            app:defaultValue="false"
+            app:key="oneshot_enable"
+            app:summary="@string/pref_oneshot_summary"
+            app:title="@string/pref_oneshot_title"/>
+        <ListPreference
+            android:entryValues="@array/cropMode_values"
+            app:defaultValue="@string/pref_cropMode_cover_value"
+            app:entries="@array/cropMode_entries"
+            app:key="crop_mode"
+            app:summary="@string/pref_cropMode_summary"
+            app:title="@string/pref_cropMode_title"
+            app:useSimpleSummaryProvider="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_baseline_image_search_24"
+        app:title="@string/pref_detection_header">
+        <SeekBarPreference
+            android:max="100"
+            app:defaultValue="50"
+            app:key="confidence_threshold"
+            app:min="0"
+            app:seekBarIncrement="5"
+            app:showSeekBarValue="true"
+            app:summary="@string/pref_confidence_threshold_summary"
+            app:title="@string/pref_confidence_threshold_title" />
+        <ListPreference
+            android:entryValues="@array/boundingBoxColorMode_values"
+            app:defaultValue="@string/pref_boundingBoxColorMode_classes_value"
+            app:entries="@array/boundingBoxColorMode_entries"
+            app:key="boundingBoxColorMode"
+            app:summary="@string/pref_boundingBoxColorMode_summary"
+            app:title="@string/pref_boundingBoxColorMode_title"
+            app:useSimpleSummaryProvider="true" />
+        <SwitchPreferenceCompat
+            app:defaultValue="false"
+            app:key="show_confidence"
+            app:title="@string/show_confidence_level"
+            app:summary="@string/show_confidence_level_summary"/>
+        <SeekBarPreference
+            android:max="8"
+            app:defaultValue="4"
+            app:key="number_threads"
+            app:min="1"
+            app:showSeekBarValue="true"
+            app:summary="@string/pref_number_threads_summary"
+            app:title="@string/pref_number_threads_title" />
+        <SwitchPreference
+            app:defaultValue="true"
+            app:key="nnapi_enable"
+            app:summary="@string/pref_nnapi_summary"
+            app:title="@string/pref_nnapi_title" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        app:icon="@drawable/ic_baseline_speed_24"
+        app:title="@string/pref_stat_header">
+        <SeekBarPreference
+            android:max="100"
+            app:defaultValue="50"
+            app:key="boxplot_number_samples"
+            app:min="10"
+            app:seekBarIncrement="5"
+            app:showSeekBarValue="true"
+            app:summary="@string/pref_boxplotSamples_summary"
+            app:title="@string/pref_boxplotSamples_title" />
+    </PreferenceCategory>
+
+</PreferenceScreen>
