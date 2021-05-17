@@ -134,17 +134,17 @@ In addition to the model file the converter writes a JSON file for the remote co
 To run the converter you need to prepare your model. You need to provide the model directory in a specific structure.
 
 ```shell
-Model Name
-|_checkpoint
-|_dataset
-    |_test
-        |_img_001.jpg
-        |_img_002.jpg
-        | ...
-|_saved_model
-    |_saved_model.pb
-|_labelmap.txt
-|_pipeline.config
+model-name/
+├── checkpoint
+├── dataset
+│   └── test
+│       ├── img_001.jpg
+│       ├── img_002.jpg
+│       └── ... 
+├── labelmap.txt
+├── pipeline.config
+└── saved_model
+    └── saved_model.pb
 ```
 
 The parent directory should be named after the model. The folder name is then usedfor naming the output files.
