@@ -12,16 +12,18 @@
 ## Summary
 *Last Update 14.05.2021 for app version 0.3.1-beta*
 
+You can get the latest compiled version of the app [here](https://github.com/embedded-machine-learning/eml-mobile-photo-app/tree/main/app/release).
+
 This readme contains a documentation of the EML Object Detection Android app. It includes a step by step guide to set up a tensorflow environment for converting TensorFlow models to app-compatible Tensorflow Lite models and to host them in the cloud with Google Firebase.
 
 The guide is written for Windows 10 with a CUDA capable GPU. If you dont have CUDA support, just skip the CUDA and cuDNN intallation. When you just want to convert models and do no training, you probably see no notable speed increase with GPU support at all.
 
 ## Subjects
-1. [Introduction](#1.-introduction)
-2. [Setup the environment](#2.-setup-the-environment)
-3. [Convert a model](#3.-convert-a-model)
-4. [Remote model hosting](#4.-remote-model-hosting)
-5. [App Documentaion](5.-app-documentation)
+1. [Introduction](#1-introduction)
+2. [Setup the environment](#2-setup-the-environment)
+3. [Convert a model](#3-convert-a-model)
+4. [Remote model hosting](#4-remote-model-hosting)
+5. [App Documentaion](#5-app-documentation)
 
 ---
 
