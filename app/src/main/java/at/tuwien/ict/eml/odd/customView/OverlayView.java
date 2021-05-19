@@ -36,7 +36,7 @@ public class OverlayView extends View {
     }
 
     /**
-     * method to register a draw callback
+     * Method to register a draw callback
      * @param callback A callback which will be called on postInvalidate
      */
     public void addCallback(final DrawCallback callback) {
@@ -44,7 +44,7 @@ public class OverlayView extends View {
     }
 
     /**
-     * When postInvalidate gets called onto this view, all draw callbacks get called
+     * When postInvalidate gets called onto this view, draw gets called, therefore all registered draw callbacks get called and draw onto this views canvas
      * @param canvas Canvas onto draw
      */
     @SuppressLint("MissingSuperCall")
@@ -56,7 +56,7 @@ public class OverlayView extends View {
     }
 
     /**
-     * Interface defining the callback for client classes.
+     * Interface defining the draw callback for client classes.
      */
     public interface DrawCallback {
         void drawCallback(final Canvas canvas);

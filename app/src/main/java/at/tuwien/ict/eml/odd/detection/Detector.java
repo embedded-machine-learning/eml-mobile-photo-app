@@ -104,6 +104,9 @@ public interface Detector {
             this.location = location;
         }
 
+        /**
+         * String representation of a Recognition.
+         */
         @SuppressLint("DefaultLocale")
         @Override
         public String toString() {

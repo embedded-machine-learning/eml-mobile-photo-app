@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
+/**
+ * Class for generating and drawing a boxplot onto a given canvas
+ */
 public class Boxplot{
     private Paint plotPaint;
     private Paint axisPaint;
@@ -43,6 +46,15 @@ public class Boxplot{
 
     private float linewidth;
 
+    /**
+     * Boxplot constructor
+     * @param rectColor     The color of the middle rectangle
+     * @param whiskerColor  The color of the min and max whiskers
+     * @param medianColor   The color of the median line
+     * @param connColor     The color of the horizontal connection line
+     * @param textSize      The Textsize of the boxplot markings
+     * @param linewidth     The General linewidth of the boxplot
+     */
     public Boxplot(final int rectColor, final int whiskerColor, final int medianColor, final int connColor, final float textSize, final float linewidth) {
         this.linewidth = linewidth;
 
@@ -79,6 +91,10 @@ public class Boxplot{
 
     }
 
+    /**
+     * Copy the data into the boxplot
+     * @param data Data to be processed
+     */
     public final void setBoxplotData(ArrayList<Integer> data){
         if(data != null){
             this.data = (ArrayList<Integer>) data.clone();
@@ -86,6 +102,9 @@ public class Boxplot{
         }
     }
 
+    /**
+     * Calculates all needed values for drawing the boxplot
+     */
     private void processData(){
         data.sort(Comparator.naturalOrder());
         minWhisker = Collections.min(data);
@@ -95,15 +114,21 @@ public class Boxplot{
         thirdQuart = quartile(3, data);
     }
 
+    /**
+     * Draw the boxplot onto canvas
+     * @param canvas The canvas to draw on
+     */
     public final void drawBoxplot(Canvas canvas){
         final float canvasSizeX = canvas.getWidth();
         final float canvasSizeY = canvas.getHeight();
 
+        // set the vertical ratio between the elements
         float plotHeight = (float) (canvasSizeY*0.5);
         final float whiskerPadding = 0.25f*plotHeight;
         final float axisBaseline = (float) (canvasSizeY*0.75);
         final float medianBaseline = canvasSizeY;
 
+        // message until the first drawing
         if(data == null){
             canvas.drawText("Gathering data ...", canvasSizeX/2-axisPaint.measureText("Gathering data ...")/2, plotHeight/2, messagePaint);
             return;
@@ -136,6 +161,9 @@ public class Boxplot{
         canvas.drawText(medianText, canvas_median-axisPaint.measureText(medianText)/2, medianBaseline, medianTextPaint);
     }
 
+    /** 
+     * Calculates the median
+     */
     private static Integer median(ArrayList<Integer> data){
         Integer median;
         // even
@@ -146,6 +174,12 @@ public class Boxplot{
         return median;
     }
 
+    /**
+     * Calculates the requested quartile
+     * @param quartileOrder The requested quartile
+     * @param data The data
+     * @return The boundary of the requested quartile
+     */
     private static float quartile(Integer quartileOrder, ArrayList<Integer> data){
         float index = (float) quartileOrder/4*(data.size()+1);
         if (index == (int)index){

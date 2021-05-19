@@ -28,20 +28,16 @@ import java.util.Objects;
 public class ImageUtils {
 
     /**
-     * cuts out the visible screen area of a bitmap which is defined through the aspect-dimensions,
+     * Cuts out the visible screen area of a bitmap which is defined through the aspect-dimensions.
      * and crops this (if scaleToDstSize is True) to the model input size.
-     * When cropModeContain is True, parts of the visible screen area will be cut away to maintain
-     * a 1:1 aspect ratio - when False the whole visible screen area will be clinched to the
-     * model input size
      * @param src Source bitmap
-     * @param aspectDstWidth Width of the visible area
-     * @param aspectDstHeight Height of the visible area
-     * @param applyRotationToSrc Rotation information of the src Bitmap
-     * @param dstSize Model input size in pixel
-     * @param scaleToDstSize When True scale it to the dstSize, when false just cut out the
-     *                       visible screen area out of the bitmap
-     * @param cropModeContain When True, crop with a 1:1 aspect ratio, if not clinch the image
-     * @return The processed image
+     * @param aspectDstWidth Width of the visible area.
+     * @param aspectDstHeight Height of the visible area.
+     * @param applyRotationToSrc Rotation information of the source bitmap.
+     * @param dstSize Model input size in pixel.
+     * @param scaleToDstSize When True scale it to the dstSize, when false just cut out the visible screen area out of the bitmap.
+     * @param cropModeContain When True, crop with a 1:1 aspect ratio, if not clinch the whole visible screen area to the dstSize.
+     * @return The processed image.
      */
     public static Bitmap ConvertPreviewBitmapToModelInput(
             final Bitmap src,
@@ -94,14 +90,13 @@ public class ImageUtils {
     }
 
     /**
-     * calculates the part of the visible screen area of an image
-     * with sizes relative to the src image
-     * @param srcWidth Width of the source image
-     * @param srcHeight Height of the source image
-     * @param aspectDstWidth Width of the screen
-     * @param aspectDstHeight Width of the screen
-     * @param applyRotationToSrc Rotation information of the src Bitmap
-     * @return ArrayList with the calculated visible image part
+     * Calculates the part of the visible screen area of an image with size relative to the source image.
+     * @param srcWidth Width of the source image.
+     * @param srcHeight Height of the source image.
+     * @param aspectDstWidth Width of the screen.
+     * @param aspectDstHeight Width of the screen.
+     * @param applyRotationToSrc Rotation information of the src Bitmap.
+     * @return ArrayList with the calculated visible image part.
      */
     public static ArrayList<Integer> getVisibleFrameSize(
             final int srcWidth,
@@ -140,13 +135,13 @@ public class ImageUtils {
      * the rotation applyRotation to [dstWidth x dstHeight] und the optionally the maintenance
      * of a 1:1 aspect ratio
      *
-     * @param srcWidth Width of the source image
-     * @param srcHeight Height of the source image
-     * @param dstWidth Width of the destination image
-     * @param dstHeight Height of the destination image
-     * @param applyRotation Rotation information of the src Bitmap
+     * @param srcWidth Width of the source image.
+     * @param srcHeight Height of the source image.
+     * @param dstWidth Width of the destination image.
+     * @param dstHeight Height of the destination image.
+     * @param applyRotation Rotation information of the src Bitmap.
      * @param containDstAspect When True, crop with a 1:1 aspect ratio, if not clinch the image
-     * @return Transformation Matrix
+     * @return The transformation Matrix
      */
     public static Matrix getTransformationMatrix(
             final int srcWidth,
@@ -190,7 +185,7 @@ public class ImageUtils {
     }
 
     /**
-     * reads the rotation information of the image saved in the exif info
+     * Reads the rotation information of the image saved in the exif info.
      *
      * @param uri The uri of the image
      * @return The rotation of the image in degree

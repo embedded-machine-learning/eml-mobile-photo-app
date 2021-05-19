@@ -8,7 +8,7 @@
 <img src="doc\tfl2a.png" width="500">
 
 ## Summary
-*Last Update 17.05.2021 for app version 0.3.1-beta*
+*Last Update 18.05.2021 for app version 0.3.1-beta*
 
 You can get the latest compiled version of the app [here](https://github.com/embedded-machine-learning/eml-mobile-photo-app/tree/main/app/release).
 
@@ -32,13 +32,15 @@ Due to increasing mobile computing capabilities, machine learning applications o
 You can find a lot of object detection demonstration apps (like the official one from the TensorFlow repository) and many code pieces and snippets.
 Also there are a lot of good tutorials on converting models to the .tflite format and bringing it to an Android Smartphone. But due to the rapid development of the tensorflow ecosystem sometimes commands or APIs are deprecated or got replaced, workflows have changed with newer versions of the tools and so forth. Therefore you have to search multiple sites for answers. 
 
-This guide should act as a single source for all tools you need to use the app. The goal is to get a detailed understanding of what steps it takes to get an existing model into the app and how the app is structured.
+This guide should act as a single source for all tools you need to use the app. The goal is to get a detailed understanding of what steps it takes to get an existing model into the app and how the app is structured. 
+
+When it comes to Android app development itself including Android Studio, I would refer you to the [Android Developers Site](https://developer.android.com/) as a starting point.
 
 ### Overview
 
 In the image you can see a structured overview of the three main components of this project: The model conversion, the remote model hosting and the app itself.
 
-<img src="doc\project-overview.png" width="650"/>
+<img src="doc\project-overview.png" width="700"/>
 
 ## 2. Setup the environment
 
@@ -99,6 +101,8 @@ The Project is configured for the usage with Android Studio. Therefore I recomme
 Get to the Android Developer Website https://developer.android.com/studio and Download the latest version of Android Studio.
 
 Once downloaded, run the installer and follow the instructions.
+
+To open this project just open it with "Open existing project" in the opening dialog.
 
 ### Setup the model converter
 
@@ -198,7 +202,7 @@ The app is designed to work with the object detection models hosted on Google Fi
 
 For this the app is using 2 Google Firebase APIs: Machine Learning and Remote Config.
 
-<img src="doc\project-model-hosting.png" width="400"/>
+<img src="doc\project-model-hosting.png" width="450"/>
 
 The machine learning API is responsible for downloading the models from the Google cloud. 
 
@@ -273,13 +277,13 @@ Here you can see a navigational diagram of the activities and their coresponding
      <img src="doc\activity_settings.png" width="250"/>
 </p>
 
-As you can see in the diagram, the app has 3 activities with the socalled "modelChooser" activity as an entry point to the app. So when your start the app you will start in the modelChooser activity.
+As you can see in the diagram, the app has three activities with the socalled "modelChooser" activity as an entry point to the app. So when your start the app you will start in the modelChooser activity.
 
 #### ModelChooser activity
 
 In the modelChooser activity the first thing that happens is that the app will request the modelConfig from your created Google Firebase project. The remote config gets downloaded and the app creates a list of all the available models. This list is then presented to the user.
 
-The user selects a model and presses the "Start" button. After the button is pressed the selected modelfile is getting downloaded. When the download is finished the modelConfig as String and the modelFile as file location String get passed to the main activity: the camera activity.
+The user selects a model and presses the "Start" button. After the button is pressed the selected modelfile gets downloaded. When the download is finished the modelConfig as String and the modelFile as file location String get passed to the main activity: the camera activity.
 
 #### Camera activity
 
@@ -287,40 +291,77 @@ In the camera activity you see the camera screen with ongoing object detection. 
 
 In the default state the object detection is performed in the "Continuous" mode. That means that every image that comes from the camera stream, is processed and the object detection is performed. 
 
-You can change this behaviour in the settings under ["OneShot mode"](#one-shot-mode). With this mode selected the object detection is only performed when the capture button is pressed.
+You can change this behaviour in the settings under ["One Shot mode"](#one-shot-mode). With this mode selected the object detection is only performed when the capture button is pressed.
 To illustrate the data flow of the camera streams see the following picture
 
 <img src="doc\project-app-detail.png" width="700"/>
 
 Notice that the tracker in the "Continious mode" (analysis stream) is drawing the bounding boxes of the detected objects onto the tracking screen overlay, while the "OneShot mode" is drawing the boxes onto the picture itself, and saves this picture onto the devices storage.
 
-The preview stream is just to draw the current camera image onto the screen, so you can see it. This setup with this 2 camera streams is realised via CameraX.
+The preview stream is just to draw the current camera image onto the screen, so you can see it. This setup with this three seperated camera streams is realised via CameraX.
+
+For more details on the image processing see [image processing](#image-processing).
 
 Lets have a closer look at the extended statistics panel:
 
-<img src="doc\activity_camera_stat_detail.png" width="400"/>
+<img src="doc\activity_camera_stat_detail.png" width="350"/><br/>
 
-It gives you an overview over the inferences performed through the app. You can see the last inference time, the inferences per second (which includes the whole processing pipeline) and also a boxplot of the last n inferences performed.
+It gives you an overview of the inferences performed through the app. You can see the last inference time, the inferences per second (which includes the whole processing pipeline) and also a boxplot of the last n inferences performed.
 At the bottom you see basic information of the currently loaded model.
 
 #### Settings activity
 
 When you press the "setting icon" in the camera activity you get to the setting activity, where you can change different parameters and setting. See detailed description under [Settings](#settings)
+
+## Image Processing
+An important part of the app is the processing of the images of the camera stream. In this section I provide a detailed description of this process. 
+
+This app uses CameraX as camera API. So specific methods and processing steps are unique to CameraX.
+
+For every image from one of the camera streams, you will get an image with a predefined resolution. You can also request a target resolution, but most of the time, you will get another resolution. The real resolution will always be bigger than your requested target resolution. 
+
+So for an example lets say our loaded model needs an input size of 300 x 300 pixels. The app is then requesting a resolution for the images of 600 x 800 pixels (because the app sets the target resolution based on the model input size).
+
+*NOTE: the mentioned resolutions are just for demonstration purposes and vary from device to device*
+
+<img src="doc\image_conversion_process.png" width="550"/>
+
+The first step in the processing is the conversion of the color model. Because the image from the camera is in YUV format, and we want RGB format as model input. For this conversion a renderscript is used.
+
+The next step (valid for the "Analysis mode", not for the "One Shot mode"): We are not interested in the image parts which are not visible on the screen. So we cut out the visible part of the image as shown in the next picture.
+
+<img src="doc\camera_visible.png" width="300"/>
+
+After we gathered the visible part of the image, we need to bring it to the desired model input size (e.g. 300x300 px).
+
+How this final transformation is performed depends on the setting [Crop Mode](#crop-mode).  
+With the "Cover" setting, the whole visible image is scaled to the model input format
+
+<img src="doc\cover_mode.png" width="550"/>
+
+whereas the "Contain" setting is croping the biggest possible image part in the middle of the screen with a 1:1 aspect ratio
+
+<img src="doc\contain_mode.png" width="550"/>
+
+To represent the loss of information when using the "Contain Mode", the part of the image, which will not be used for the detection will be darkened.
+
+As mentioned above, the image processing described above is for the "Analysis mode". In the "One Shot mode" the processing is analog but without cutting the image to the screen visible part. In that mode we can use the whole image from the capture stream.
+
 ### Settings
 
 #### One Shot Mode 
 When enabled, the object detection is only performed when the capture button is pressed. The image with drawn bounding boxes is then shown to the user.
 
 #### Crop Mode  
-If "Cover": The whole visible image is croped to the model input size. This aspect ratio will not be preserved.  
-If "Contain": A part of the image in the middle is cut out with an aspect ratio of 1:1 with the biggest possible size. This cut out is represented with the darkened areas on the screen.
+"Cover": The whole visible image is croped to the model input size. This aspect ratio will not be preserved.  
+"Contain": A part of the image in the middle is cut out with an aspect ratio of 1:1 with the biggest possible size. This cut out is represented with the darkened areas on the screen.
 
 #### Confidence Threshold
 Minimum confidence value to draw the bounding box.
 
 #### Bound Box Color Mode
-If "Classes": Every class gets a random chosen color.
-If "Confidence": The higher the confidence, the greener the bounding box get.
+"Classes": Every class gets a random chosen color.  
+"Confidence": The higher the confidence, the greener the bounding box get.
 
 #### Display confidence in Bounding Box
 If enabled, the confidence value will be drawn into the bounding box header.
@@ -333,3 +374,18 @@ Allows the TensorFlow Lite API to use the Android Neural Network API.
 
 #### Boxplot Sample Number
 Changes the buffer size of the inference values shown by the boxplot in the statistics panel.
+
+## References
+
+- [TensorFlow Lite Android quickstart](https://www.tensorflow.org/lite/guide/android)
+- [TensorFlow Lite Object detection Android Demo](https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/android)
+- [Running TF2 Detection API Models on mobile](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/running_on_mobile_tf2.md)
+- [Use a custom TensorFlow Lite model on Android](https://firebase.google.com/docs/ml/android/use-custom-models)
+- [Get started with Firebase Remote Config](https://firebase.google.com/docs/remote-config/use-config-android#java_1)
+- [CameraX architecture](https://developer.android.com/training/camerax/architecture)
+- [Android Camera Samples](https://github.com/android/camera-samples)
+
+- [Transfer Learning using Tensorflow's Object Detection API: detecting R2-D2 and BB-8](https://averdones.github.io/tensorflow-object-detection-star-wars/)
+- [Developing SSD-Object Detection Models for Android using TensorFlow](https://www.inspirisys.com/objectdetection_in_tensorflowdemo.pdf)
+- [TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi](https://github.com/EdjeElectronics/TensorFlow-Lite-Object-Detection-on-Android-and-Raspberry-Pi)
+- [Recognize Flowers with TensorFlow Lite on Android](https://codelabs.developers.google.com/codelabs/recognize-flowers-with-tensorflow-on-android#0)

@@ -35,6 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
+
+        // create new settings fragment
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
@@ -55,7 +57,7 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     /**
-     * set the settings from settings resource and set listeners for snapping the values of boxplot samples and config threshold
+     * Set the settings from preferences resource and set listeners for snapping the values of boxplot samples and config threshold
      */
     public static class SettingsFragment extends PreferenceFragmentCompat {
         @Override

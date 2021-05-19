@@ -48,7 +48,7 @@ public class FirebaseML {
     private boolean configValueReady = false;
 
     /**
-     *  interface for callback
+     *  Interface for callback
      */
     public interface onCompleteCallback{
         void onSuccess();
@@ -67,8 +67,8 @@ public class FirebaseML {
     }
 
     /**
-     * downloads the remote config from firebase
-     * @param key of the config field which contains the model name
+     * Requests and downloads the remote config from firebase.
+     * @param key Key name of the remote config parameter you want to download
      */
     public void requestRemoteConfig(String key, onCompleteCallback complete) {
         configValueReady = false;
@@ -90,8 +90,8 @@ public class FirebaseML {
     }
 
     /**
-     * get the downloaded configuration
-     * @return the config value
+     * Get the downloaded remote config parameter value
+     * @return The remote config parameter value
      */
     public FirebaseRemoteConfigValue getRemoteConfig(){
         if (configValueReady){
@@ -103,14 +103,14 @@ public class FirebaseML {
     }
 
     /**
-     * extract the list of available models out of the json
-     * @param modelConfig config in json string form
-     * @return ArrayList of available models
-     * @throws JSONException if the modelConfig is invalid
+     * Extract the list of available models out of the json
+     * @param modelConfig Config in json string form
+     * @return ArrayList of available model names
+     * @throws JSONException If the modelConfig is invalid
      */
     public static ArrayList<String> extractModelNameList(String modelConfig) throws JSONException {
         JSONObject json = new JSONObject(modelConfig);
-        // iterate through the model name keys
+        // iterate through the model name keys and adds them to a list
         Iterator<String> models = json.keys();
         ArrayList<String> modelNameList = new ArrayList<>();
         while (models.hasNext()) {
@@ -120,22 +120,22 @@ public class FirebaseML {
     }
 
     /**
-     * extracts the model file name for a given model from the JSON
+     * Extracts the model file name for a given model from the JSON
      * @param modelConfig JSON String
-     * @param modelName provided model label
-     * @return model file name
-     * @throws JSONException if modelConfig or modelName invalid
+     * @param modelName Provided model name
+     * @return Model file name
+     * @throws JSONException If modelConfig or modelName invalid
      */
     public static String extractModelFile(String modelConfig, String modelName) throws JSONException {
         return new JSONObject(modelConfig).getJSONObject(modelName).getString("model");
     }
 
     /**
-     * extracts the labelMap for a given model from the JSON
+     * Extracts the labelMap for a given model from the JSON
      * @param modelConfig JSON String
-     * @param modelName provided model name
-     * @return labelmap in ArrayList form
-     * @throws JSONException if modelConfig or modelName invalid
+     * @param modelName Provided model name
+     * @return Labelmap in ArrayList form
+     * @throws JSONException If modelConfig or modelName invalid
      */
     public static ArrayList<String> extractLabelMap(String modelConfig, String modelName) throws JSONException {
         ArrayList<String> labelMapList= new ArrayList<>();
@@ -147,15 +147,15 @@ public class FirebaseML {
     }
 
     /**
-     * extracts the model input size for a given model from the JSON
-     * @return input size of the model
+     * Extracts the model input size for a given model from the JSON
+     * @return Input size of the model
      */
     public static int extractInputSize(String modelConfig, String modelName) throws JSONException {
         return new JSONObject(modelConfig).getJSONObject(modelName).getInt("size");
     }
 
     /**
-     * extracts if the given model is quantized or not
+     * Extracts if the given model is quantized or not
      * @return True if quantized
      */
     public static boolean extractQuantized(String modelConfig, String modelName) throws JSONException {
@@ -163,8 +163,8 @@ public class FirebaseML {
     }
 
     /**
-     * starts the download of the given firebase model
-     * @param model name of the model
+     * Starts the download of the given firebase model. Calls complete when complete.
+     * @param model Name of the model
      */
     public void requestRemoteModel(String model, onCompleteCallback complete) {
         modelFileReady = false;
@@ -188,8 +188,8 @@ public class FirebaseML {
     }
 
     /**
-     * get the downloaded model
-     * @return the custom model file
+     * Get the downloaded model
+     * @return The downloaded model file
      */
     public CustomModel getRemoteModel(){
         if (modelFileReady){

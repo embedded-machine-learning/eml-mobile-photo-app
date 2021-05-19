@@ -121,9 +121,13 @@ public class Tracker {
     processResults(results);
   }
 
+  /**
+   * Draw all tracked objects on the canvas
+   * @param canvas The canvas to draw on
+   */
   @SuppressWarnings("SuspiciousNameCombination")
   public synchronized void draw(final Canvas canvas) {
-    // if crop mode true draw the 1x1 crop frame in the preview canvas
+    // if crop mode true draw the 1x1 crop frame box on the preview canvas
     if(showCropFrame){
       RectF cropRect, cropRect_top, cropRect_bottom;
       if(frameWidth < frameHeight){
@@ -177,6 +181,10 @@ public class Tracker {
     }
   }
 
+  /**
+   * Process the list of Recognitions for further processing.
+   * @param results List of given Recognitions
+   */
   private void processResults(final List<Recognition> results) {
     final List<Pair<Float, Recognition>> rectsToTrack = new LinkedList<>();
 
