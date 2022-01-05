@@ -1,6 +1,6 @@
 # EML Object Detection Android App
 
-![TensorFlow](https://img.shields.io/badge/TensorFlow-2.5_(nightly)-FF6F00?logo=tensorflow&style=flat-square)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-2.5.0-FF6F00?logo=tensorflow&style=flat-square)
 ![CUDA](https://img.shields.io/badge/CUDA-11.2-76B900?logo=nvidia&style=flat-square)
 ![cuDNN](https://img.shields.io/badge/cuDNN-8.1-76B900?logo=nvidia&style=flat-square)
 ![Python](https://img.shields.io/badge/Python-3.8-3776AB?logo=python&style=flat-square)
@@ -8,7 +8,7 @@
 <img src="doc\tfl2a.png" width="500">
 
 ## Summary
-*Last Update 18.05.2021 for app version 0.3.1-beta*
+*Last Update 05.01.2022 for app version 0.3.1-beta*
 
 You can get the latest compiled version of the app [here](https://github.com/embedded-machine-learning/eml-mobile-photo-app/tree/main/app/release).
 
@@ -75,13 +75,12 @@ conda config --add channels conda-forge
 
 Note that we are installing specific versions of Tensorflow, Cuda and cudNN. You can find the list of the tested build configurations [here](https://www.tensorflow.org/install/source#tested_build_configurations).
 
-Install Tensorflow with GPU support with
+Install Tensorflow with
 ```shell
-python -m pip install tf-nightly-gpu
+python -m pip install tensorflow==2.5.0
 ```
-Note: If you dont want the GPU support, replace tf-nightly-gpu with tf-nightly.
 
-If you want the GPU support you also need to install Cuda and cudNN with 
+If you want GPU support you also need to install Cuda and cudNN with 
 ```shell
 conda install cudatoolkit=11.2 cudnn=8.1
 ```
